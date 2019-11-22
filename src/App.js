@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import 'bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-const url = 'https://dog.ceo/api/breeds/image/random';
+import './App.css';
+import Navigation from './Navigation.js';
+import Footer from './Footer.js';
 
+const url = 'https://dog.ceo/api/breeds/image/random';
 
 class App extends Component {
   constructor(props){
@@ -41,15 +44,21 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container w-100">
-        <div className="row">
-          <div className="col-12">
-            <h1 onClick={this.getDog}>Guess what breed!</h1>
-            <button className="btn btn-primary" onClick={this.getDog}>Get New Dog</button>
-            <h2>{this.state.dog_name}</h2>
-            <img className="w-50" src={this.state.image} alt={this.state.dog_name}/>
+      <div>
+        <Navigation />
+        <div className="container-fluid bg-info header">
+          <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h1 className="display-5" onClick={this.getDog}>Guess what breed!</h1>
+              <button className="btn btn-primary" onClick={this.getDog}>Get New Dog</button>
+              <h2>{this.state.dog_name}</h2>
+              <img className="l-100" src={this.state.image} alt={this.state.dog_name}/>
+            </div>
           </div>
         </div>
+        </div>
+        <Footer />
       </div>
     )
   }
