@@ -17,7 +17,12 @@ class App extends Component {
 		}
   }
 
-  //Account Settings Handlers
+  showDogName = (event) => {
+    console.log('log dog name');
+    this.setState({isShowingDogName: true})
+    
+  }
+
   getDog = (event) => {
     event.preventDefault();    
     axios.get(url)
@@ -35,6 +40,7 @@ class App extends Component {
         this.setState({
           image: res.data.message,
           dog_name: breed,
+          isShowingDogName : false,
         });
       }
     })
@@ -52,7 +58,8 @@ class App extends Component {
             <div className="col-12">
               <h1 className="display-5" onClick={this.getDog}>Guess what breed!</h1>
               <button className="btn btn-primary" onClick={this.getDog}>Get New Dog</button>
-              <h2>{this.state.dog_name}</h2>
+              <button className="btn btn-success" onClick={this.showDogName}>Show Breed Name</button>
+              {this.state.isShowingDogName ? <h2>{this.state.dog_name}</h2> : null }
               <img className="l-100" src={this.state.image} alt={this.state.dog_name}/>
             </div>
           </div>
