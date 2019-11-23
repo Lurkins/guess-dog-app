@@ -22,5 +22,13 @@
 }
 
 .header {
-  height: 80vh;
+  height: 25vh;
+}
+
+.dog-box {
+  height: 50vh;
+}
+
+.dog-name {
+  height: 40px;
 }
