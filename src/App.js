@@ -5,6 +5,8 @@ import axios from 'axios';
 import './App.css';
 import Navigation from './Navigation.js';
 import Footer from './Footer.js';
+import { Spinner } from 'reactstrap';
+ 
 
 const url = 'https://dog.ceo/api/breeds/image/random';
 
@@ -14,6 +16,7 @@ class App extends Component {
 		this.state = {
       dog_image: '',
       dog_name: '',
+      isLoading: false,
 		}
   }
 
@@ -24,7 +27,8 @@ class App extends Component {
   }
 
   getDog = (event) => {
-    event.preventDefault();    
+    event.preventDefault();
+    this.setState({ isLoading: true });    
     axios.get(url)
     .then(res => {
       var breed = res.data.message.substring(
@@ -35,12 +39,14 @@ class App extends Component {
         this.setState({
           image: res.data.message,
           dog_name: 'breed unavailable',
+          isLoading: false,
         });
       } else {
         this.setState({
           image: res.data.message,
           dog_name: breed,
           isShowingDogName : false,
+          isLoading: false,
         });
       }
     })
@@ -55,12 +61,20 @@ class App extends Component {
         <div className="container-fluid bg-info header">
           <div className="container">
           <div className="row">
-            <div className="col-12">
+            <div className="col-6">
               <h1 className="display-5" onClick={this.getDog}>Guess what breed!</h1>
-              <button className="btn btn-primary" onClick={this.getDog}>Get New Dog</button>
+              <div class="d-flex justify-content-center align-items-center h-100">
+                { this.state.isLoading ? 
+                  <Spinner animation="grow" variant="info" /> 
+                  : 
+                  <img className="w-100" src={this.state.image} alt={this.state.dog_name}/> 
+                }
+              </div>
+            </div>
+            <div className="col-6">
+            <button className="btn btn-primary" onClick={this.getDog}>Get New Dog</button>
               <button className="btn btn-success" onClick={this.showDogName}>Show Breed Name</button>
               {this.state.isShowingDogName ? <h2>{this.state.dog_name}</h2> : null }
-              <img className="l-100" src={this.state.image} alt={this.state.dog_name}/>
             </div>
           </div>
         </div>
