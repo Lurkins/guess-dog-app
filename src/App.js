@@ -8,7 +8,6 @@ import Footer from './Footer.js';
 import { Container, Row, Col, ButtonGroup, Button } from 'reactstrap';
 import dogSpinner from './dogSpinner.gif';
  
-
 const url = 'https://dog.ceo/api/breeds/image/random';
 
 class App extends Component {
@@ -20,6 +19,29 @@ class App extends Component {
       isLoading: false,
       isShowingDogName : false,
 		}
+  }
+
+  componentDidMount() {
+    axios.get(url)
+    .then(res => {
+      let dog = this.getDogNameFromURL(res);
+      this.setState({
+        image: res.data.message,
+        dog_name: dog,
+      });
+    })
+    .catch(error => {
+      console.error('Error getting dog from API.', error);
+    });
+  }
+
+  getDogNameFromURL = (res) => {
+    let url = res.data.message;
+    // eslint-disable-next-line
+    let regex = /https:\/\/images\.dog\.ceo\/breeds\/(\w+\-?\w+)\/.+/g;
+    let breed = regex.exec(url);
+    let dog = this.fixBreed(breed[1]);
+    return dog;
   }
 
   showDogName = (event) => {
@@ -51,14 +73,13 @@ class App extends Component {
 
   getDog = (event) => {
     event.preventDefault();
-    this.setState({ isLoading: true, isShowingDogName: false });    
+    this.setState({ 
+      isLoading: true, 
+      isShowingDogName: false 
+    });    
     axios.get(url)
     .then(res => {
-      let url = res.data.message;
-      // eslint-disable-next-line
-      let regex = /https:\/\/images\.dog\.ceo\/breeds\/(\w+\-?\w+)\/.+/g;
-      let breed = regex.exec(url);
-      let dog = this.fixBreed(breed[1]);
+      let dog = this.getDogNameFromURL(res);
       this.setState({
         image: res.data.message,
         dog_name: dog,
