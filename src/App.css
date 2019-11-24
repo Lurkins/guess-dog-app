@@ -32,3 +32,11 @@
 .dog-name {
   height: 40px;
 }
+
+.btn-group {
+  width: 100%;
+}
+
+.btn-group .btn {
+  width: 50%;
+}
