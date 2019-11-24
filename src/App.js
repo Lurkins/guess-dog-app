@@ -5,7 +5,7 @@ import axios from 'axios';
 import './App.css';
 import Navigation from './Navigation.js';
 import Footer from './Footer.js';
-import { Container, Row, Col, ButtonGroup } from 'reactstrap';
+import { Container, Row, Col, ButtonGroup, Button } from 'reactstrap';
 import dogSpinner from './dogSpinner.gif';
  
 
@@ -23,9 +23,8 @@ class App extends Component {
   }
 
   showDogName = (event) => {
-    console.log('log dog name');
+    event.preventDefault();
     this.setState({isShowingDogName: true})
-    
   }
 
   //capitalize breed name
@@ -52,7 +51,7 @@ class App extends Component {
 
   getDog = (event) => {
     event.preventDefault();
-    this.setState({ isLoading: true });    
+    this.setState({ isLoading: true, isShowingDogName: false });    
     axios.get(url)
     .then(res => {
       let url = res.data.message;
@@ -63,7 +62,6 @@ class App extends Component {
       this.setState({
         image: res.data.message,
         dog_name: dog,
-        isShowingDogName : false,
         isLoading: false,
       });
     })
@@ -83,8 +81,8 @@ class App extends Component {
             <Col className="col-12">
             <div className="row d-flex justify-content-center">
               <ButtonGroup className="btn-group" aria-label="dog button group">
-                <button className="btn btn-info" onClick={this.getDog}>Get Dog</button>
-                <button className="btn btn-info" onClick={this.showDogName}>Show Breed</button>
+                <Button className="btn btn-info" onClick={this.getDog}>Get Dog</Button>
+                <Button className="btn btn-info" onClick={this.showDogName}>Show Breed</Button>
               </ButtonGroup>
             </div>
             </Col>
@@ -108,6 +106,15 @@ class App extends Component {
                     : 
                     <img className="mh-100 mb-5 d-block rounded" src={this.state.image} alt={this.state.dog_name}/> 
                   }
+                </div>
+              </Col>
+            </Row>
+          </Container>
+          <Container fluid={true}>
+            <Row>
+              <Col className="col-12">
+                <div className="bg-warning many-dog-section">
+                dogs dogs dogs
                 </div>
               </Col>
             </Row>
