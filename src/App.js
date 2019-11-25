@@ -37,7 +37,6 @@ class App extends Component {
 
     axios.get(url + '/9')
     .then(res => {
-      console.log('this is res', res);
       this.setState({
         dogArray: res.data.message,
       });
@@ -143,13 +142,16 @@ class App extends Component {
               </Col>
             </Row>
           </Container>
+          <hr/>
           <Container fluid={true}>
             <Row>
-              <Col className="col-12">
-                <div className="bg-warning many-dog-section">
-                dogs dogs dogs
-                </div>
-              </Col>
+              {this.state.dogArray.map((value, index) => {
+                return (
+                  <Col className="col-4" key={index} >
+                    <img className="w-100 mb-2" src={value} alt={value}/>
+                  </Col>
+                )
+              })}
             </Row>
           </Container>
         <Footer />
