@@ -18,6 +18,7 @@ class App extends Component {
       dog_name: '',
       isLoading: false,
       isShowingDogName : false,
+      dogArray: [],
 		}
   }
 
@@ -28,6 +29,17 @@ class App extends Component {
       this.setState({
         image: res.data.message,
         dog_name: dog,
+      });
+    })
+    .catch(error => {
+      console.error('Error getting dog from API.', error);
+    });
+
+    axios.get(url + '/9')
+    .then(res => {
+      console.log('this is res', res);
+      this.setState({
+        dogArray: res.data.message,
       });
     })
     .catch(error => {
