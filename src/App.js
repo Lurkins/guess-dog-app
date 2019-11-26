@@ -5,8 +5,9 @@ import axios from 'axios';
 import './App.css';
 import Navigation from './Navigation.js';
 import Footer from './Footer.js';
-import { Container, Row, Col, ButtonGroup, Button } from 'reactstrap';
+import { Container, Row, Col, ButtonGroup, Button, CardColumns } from 'reactstrap';
 import dogSpinner from './dogSpinner.gif';
+import DogCard from './DogCard.js';
  
 const url = 'https://dog.ceo/api/breeds/image/random';
 
@@ -144,15 +145,14 @@ class App extends Component {
           </Container>
           <hr/>
           <Container fluid={true}>
-            <Row>
+            <CardColumns>
               {this.state.dogArray.map((value, index) => {
                 return (
-                  <Col className="col-4" key={index} >
-                    <img className="w-100 mb-2" src={value} alt={value}/>
-                  </Col>
+                  <DogCard  props={value} key={index} />
+
                 )
               })}
-            </Row>
+            </CardColumns>
           </Container>
         <Footer />
       </div>
