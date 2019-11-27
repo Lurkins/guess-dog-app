@@ -8,6 +8,7 @@ import Footer from './Footer.js';
 import { Container, Row, Col, ButtonGroup, Button, CardColumns } from 'reactstrap';
 import dogSpinner from './dogSpinner.gif';
 import DogCard from './DogCard.js';
+import Carousel from './Carousel.js';
  
 const url = 'https://dog.ceo/api/breeds/image/random';
 
@@ -109,6 +110,7 @@ class App extends Component {
     return (
       <div>
         <Navigation />
+        <Carousel />
           <div className="d-flex justify-content-center align-items-center">
             <h1 className="display-4">Guess what dog breed!</h1>
           </div>
@@ -154,7 +156,7 @@ class App extends Component {
             <CardColumns>
               {this.state.dogArray.map((value, index) => {
                 return (
-                  <DogCard  dogImg={value} key={index} />
+                  <DogCard key={index} dogImg={value} />
                 )
               })}
             </CardColumns>
