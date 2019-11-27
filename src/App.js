@@ -35,7 +35,10 @@ class App extends Component {
     .catch(error => {
       console.error('Error getting dog from API.', error);
     });
+    this.getDogArray();
+  }
 
+  getDogArray = (res) => {
     axios.get(url + '/9')
     .then(res => {
       this.setState({
@@ -145,11 +148,13 @@ class App extends Component {
           </Container>
           <hr/>
           <Container fluid={true}>
+          <ButtonGroup className="btn-group my-5" aria-label="dog button group">
+            <Button className="btn btn-info" onClick={this.getDogArray}>Refresh Dogs</Button>
+          </ButtonGroup>
             <CardColumns>
               {this.state.dogArray.map((value, index) => {
                 return (
-                  <DogCard  props={value} key={index} />
-
+                  <DogCard  dogImg={value} key={index} />
                 )
               })}
             </CardColumns>
