@@ -27,7 +27,8 @@ class App extends Component {
   componentDidMount() {
     axios.get(url)
     .then(res => {
-      let dog = this.getDogNameFromURL(res);
+      let url = res.data.message;
+      let dog = this.getDogNameFromURL(url);
       this.setState({
         image: res.data.message,
         dog_name: dog,
@@ -39,20 +40,29 @@ class App extends Component {
     this.getDogArray();
   }
 
-  getDogArray = (res) => {
+  getDogArray = () => {
+    //Add number of desired dogs to URL and API returns that many dogs
     axios.get(url + '/9')
     .then(res => {
+      let newDogArray = res.data.message.map((url) => {
+        let dogObj = {};
+        let oneDog = this.getDogNameFromURL(url);
+        dogObj.dogName = oneDog;
+        dogObj.dogImg = url;
+        return dogObj;
+      });
+      console.log('this is newDogArray', newDogArray);
       this.setState({
-        dogArray: res.data.message,
+        dogArray: newDogArray,
       });
     })
     .catch(error => {
-      console.error('Error getting dog from API.', error);
+      console.error('Error getting dogs from API.', error);
     });
   }
 
-  getDogNameFromURL = (res) => {
-    let url = res.data.message;
+  getDogNameFromURL = (url) => {
+    // let url = res.data.message;
     // eslint-disable-next-line
     let regex = /https:\/\/images\.dog\.ceo\/breeds\/(\w+\-?\w+)\/.+/g;
     let breed = regex.exec(url);
@@ -95,7 +105,9 @@ class App extends Component {
     });    
     axios.get(url)
     .then(res => {
-      let dog = this.getDogNameFromURL(res);
+      console.log(res);
+      let url = res.data.message;
+      let dog = this.getDogNameFromURL(url);
       this.setState({
         image: res.data.message,
         dog_name: dog,
@@ -155,8 +167,9 @@ class App extends Component {
           </ButtonGroup>
             <CardColumns>
               {this.state.dogArray.map((value, index) => {
+                console.log('this is value', value);
                 return (
-                  <DogCard key={index} dogImg={value} />
+                  <DogCard key={index} dogImg={value.dogImg} dogName={value.dogName} />
                 )
               })}
             </CardColumns>
