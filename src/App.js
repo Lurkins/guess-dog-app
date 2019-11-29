@@ -21,6 +21,7 @@ class App extends Component {
       isLoading: false,
       isShowingDogName : false,
       dogArray: [],
+      isShowingCard: false,
 		}
   }
 
@@ -54,6 +55,7 @@ class App extends Component {
       console.log('this is newDogArray', newDogArray);
       this.setState({
         dogArray: newDogArray,
+        // isShowingCard: false,
       });
     })
     .catch(error => {
@@ -119,6 +121,8 @@ class App extends Component {
     });
   }
   render() {
+    //Set vaeriable for card animation
+    // const classes = this.state.isShowingCard ? 'show' : 'hide';
     return (
       <div>
         <Navigation />

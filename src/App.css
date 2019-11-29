@@ -44,3 +44,11 @@
 .many-dog-section {
   height: 300px;
 }
+
+.show {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+.hide {
+  opacity: 0;
+}
