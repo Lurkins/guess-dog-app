@@ -7,31 +7,31 @@ class DogCard extends Component {
     constructor(props){
           super(props);
           this.state = {
-            isShowingCard: false,
+            // isShowingCard: false,
           };
     }
 
-    componentDidUpdate(prevState) {
-        // if (this.state.isShowingCard !== prevProps.isShowingCard) {
-        //     this.setState({isShowingCard: true});
-        // }
-        this.setState( (prevState) => {
-            console.log('inSetState', prevState );
-            if(prevState.isShowingCard !== true) {
-                console.log('this is showing card');
-                return {
-                    isShowingCard: !this.state.isShowingCard
-                };
-            }
-        });
+    // componentDidUpdate(prevState) {
+    //     // if (this.state.isShowingCard !== prevProps.isShowingCard) {
+    //     //     this.setState({isShowingCard: true});
+    //     // }
+    //     this.setState( (prevState) => {
+    //         console.log('inSetState', prevState );
+    //         if(prevState.) {
+    //             console.log('this is showing card');
+    //             return {
+    //                 isShowingCard: !this.state.isShowingCard
+    //             };
+    //         }
+    //     });
         
-    }
+    // }
     render() {
         return (
-            <Card className={`${this.state.isShowingCard ? "show" : "hide"}`}>
+            <Card>
             <img className="w-100 mb-2 rounded" src={this.props.dogImg} alt={this.props.dogImg} />
             <div className="p-3">
-              <h3>{this.props.dogName}</h3>
+              {this.props.showName ? <h3>{this.props.dogName}</h3> : null}
             </div>   
           </Card>
         );

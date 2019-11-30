@@ -1,7 +1,7 @@
 .show {
-    transition: opacity 0.5s;
-    opacity: 1;
+    transition: opacity 1s;
+    /* opacity: 1; */
   }
-  .hide {
+  /* .hide {
     opacity: 0;
-  }
+  } */

@@ -21,6 +21,8 @@ class App extends Component {
       isLoading: false,
       isShowingDogName : false,
       dogArray: [],
+      isLoadingDogArray: false,
+      isShowingDogArrayNames: false,
 		}
   }
 
@@ -41,6 +43,7 @@ class App extends Component {
   }
 
   getDogArray = () => {
+    this.setState({isLoadingDogArray: true});
     //Add number of desired dogs to URL and API returns that many dogs
     axios.get(url + '/9')
     .then(res => {
@@ -53,6 +56,7 @@ class App extends Component {
       });
       this.setState({
         dogArray: newDogArray,
+        isLoadingDogArray: false,
       });
     })
     .catch(error => {
@@ -149,9 +153,14 @@ class App extends Component {
               <Col className="col-12">
                 <div className="d-flex justify-content-center align-items-center mt-3 dog-box">
                   { this.state.isLoading ? 
-                    <img className="d-block mb-5" src={dogSpinner} alt="dog spinner"/>
+                    <img className="d-block mb-5" 
+                    src={dogSpinner} 
+                    alt="dog spinner"/>
                     : 
-                    <img className="mh-100 mb-5 d-block rounded" src={this.state.image} alt={this.state.dog_name}/> 
+                    <img className="mh-100 mb-5 d-block rounded" 
+                    src={this.state.image} 
+                    alt={this.state.dog_name}
+                  /> 
                   }
                 </div>
               </Col>
@@ -160,19 +169,40 @@ class App extends Component {
           <hr/>
           <Container fluid={true}>
           <ButtonGroup className="btn-group my-5" aria-label="dog button group">
-            <Button className="btn btn-info" onClick={this.getDogArray}>Refresh Dogs</Button>
+            <Button className="btn btn-info" onClick={this.getDogArray}>
+              Refresh Dogs
+            </Button>
+            <Button 
+              className="btn btn-warning" 
+              onClick={() => this.setState({isShowingDogArrayNames: !this.state.isShowingDogArrayNames})}
+            >
+              {this.state.isShowingDogArrayNames ? "Hide Dog Names" : "Show Dog Names"}
+            </Button>
           </ButtonGroup>
+          <div className="vh-100">
+          {
+            this.state.isLoadingDogArray ? 
+            <div className="d-flex justify-content-center">
+            <img className="d-block mb-5" 
+            src={dogSpinner} 
+            alt="dog spinner"
+            />
+            </div>
+            :             
             <CardColumns>
-              {this.state.dogArray.map((value, index) => {
-                return (
-                  <DogCard 
-                    key={index} 
-                    dogImg={value.dogImg} 
-                    dogName={value.dogName}
-                  />
-                )
-              })}
-            </CardColumns>
+            {this.state.dogArray.map((value, index) => {
+              return (
+                <DogCard 
+                  key={index} 
+                  dogImg={value.dogImg} 
+                  dogName={value.dogName}
+                  showName={this.state.isShowingDogArrayNames}
+                />
+              )
+            })}
+          </CardColumns>
+          }
+          </div>
           </Container>
         <Footer />
       </div>
