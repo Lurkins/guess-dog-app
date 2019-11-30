@@ -52,10 +52,8 @@ class App extends Component {
         dogObj.dogImg = url;
         return dogObj;
       });
-      console.log('this is newDogArray', newDogArray);
       this.setState({
         dogArray: newDogArray,
-        // isShowingCard: false,
       });
     })
     .catch(error => {
@@ -64,7 +62,6 @@ class App extends Component {
   }
 
   getDogNameFromURL = (url) => {
-    // let url = res.data.message;
     // eslint-disable-next-line
     let regex = /https:\/\/images\.dog\.ceo\/breeds\/(\w+\-?\w+)\/.+/g;
     let breed = regex.exec(url);
@@ -83,7 +80,7 @@ class App extends Component {
     return breed.replace(/\-/g,' ').split(" ").map(word => word.charAt(0).toUpperCase()+word.slice(1)).join(" ");
   }
 
-  //fixBreed
+  //Fix the formatting on certain breed names from url
   fixBreed = (breed) => {
     if(breed === 'germanshepherd'){
       return 'German Shepherd';
@@ -107,7 +104,6 @@ class App extends Component {
     });    
     axios.get(url)
     .then(res => {
-      console.log(res);
       let url = res.data.message;
       let dog = this.getDogNameFromURL(url);
       this.setState({
@@ -121,8 +117,6 @@ class App extends Component {
     });
   }
   render() {
-    //Set vaeriable for card animation
-    // const classes = this.state.isShowingCard ? 'show' : 'hide';
     return (
       <div>
         <Navigation />
@@ -171,7 +165,6 @@ class App extends Component {
           </ButtonGroup>
             <CardColumns>
               {this.state.dogArray.map((value, index) => {
-                console.log('this is value', value);
                 return (
                   <DogCard key={index} dogImg={value.dogImg} dogName={value.dogName} />
                 )
