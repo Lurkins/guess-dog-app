@@ -21,7 +21,6 @@ class App extends Component {
       isLoading: false,
       isShowingDogName : false,
       dogArray: [],
-      isShowingCard: false,
 		}
   }
 
@@ -166,7 +165,11 @@ class App extends Component {
             <CardColumns>
               {this.state.dogArray.map((value, index) => {
                 return (
-                  <DogCard key={index} dogImg={value.dogImg} dogName={value.dogName} />
+                  <DogCard 
+                    key={index} 
+                    dogImg={value.dogImg} 
+                    dogName={value.dogName}
+                  />
                 )
               })}
             </CardColumns>

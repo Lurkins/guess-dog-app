@@ -1,26 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import {
 Card,
 } from 'reactstrap'; 
 
-const DogCard = (props) => {
-  const [cssClass, setClass] = useState(true);
-  useEffect(() => {
-      console.log(setClass);
-  }, [cssClass]);
-  return (
-    <Card className={`${cssClass ? "show" : "hide"}`}>
-      <img className="w-100 mb-2 rounded" src={props.dogImg} alt={props.dogImg} />
-      <div className="p-3">
-        <h3>{props.dogName}</h3>
-        {/* <p>
-            This is a wider card with supporting text below as a natural lead-in to
-            additional content. This card has even longer content than the first to
-            show that equal height action.
-        </p> */}
-      </div>   
-    </Card>
-  );
+class DogCard extends Component {
+    constructor(props){
+          super(props);
+          this.state = {
+            isShowingCard: false,
+          };
+    }
+
+    componentDidUpdate(prevState) {
+        // if (this.state.isShowingCard !== prevProps.isShowingCard) {
+        //     this.setState({isShowingCard: true});
+        // }
+        this.setState( (prevState) => {
+            console.log('inSetState', prevState );
+            if(prevState.isShowingCard !== true) {
+                console.log('this is showing card');
+                return {
+                    isShowingCard: !this.state.isShowingCard
+                };
+            }
+        });
+        
+    }
+    render() {
+        return (
+            <Card className={`${this.state.isShowingCard ? "show" : "hide"}`}>
+            <img className="w-100 mb-2 rounded" src={this.props.dogImg} alt={this.props.dogImg} />
+            <div className="p-3">
+              <h3>{this.props.dogName}</h3>
+            </div>   
+          </Card>
+        );
+      }
+
 }
+
+// const DogCard = (props) => {
+//   return (
+//     <Card className={`${props.isShowing ? "show" : "hide"}`}>
+//       <img className="w-100 mb-2 rounded" src={props.dogImg} alt={props.dogImg} />
+//       <div className="p-3">
+//         <h3>{props.dogName}</h3>
+//       </div>   
+//     </Card>
+//   );
+// }
 
 export default DogCard;
