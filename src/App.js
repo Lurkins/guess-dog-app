@@ -20,6 +20,7 @@ class App extends Component {
       dogOptions: [],
       isLoadingDogOptionsArray: false,
       correctDog: {},
+      correctAnswer: '',
       dogName: '',
       isLoading: false,
       isShowingDogName : false,
@@ -74,9 +75,15 @@ class App extends Component {
 
   checkAnswer = (dogName) => {
     if (dogName === this.state.correctDog.dogName) {
+      this.setState({
+        correctAnswer: true,
+      });
       console.log('this is check answer', dogName, 'Match');
     } else {
       console.log('no match');
+      this.setState({
+        correctAnswer: false,
+      });
       
     }
     
@@ -171,6 +178,7 @@ class App extends Component {
           dogOptions={this.state.dogOptions} 
           correctDog={this.state.correctDog} 
           checkAnswer={this.checkAnswer} 
+          correctAnswer={this.state.correctAnswer}
         />
           <div className="d-flex justify-content-center align-items-center">
             <h1 className="display-4">Guess what dog breed!</h1>
