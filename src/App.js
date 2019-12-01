@@ -9,6 +9,7 @@ import { Container, Row, Col, ButtonGroup, Button, CardColumns } from 'reactstra
 import dogSpinner from './dogSpinner.gif';
 import DogCard from './DogCard.js';
 import Carousel from './Carousel.js';
+import MultiChoice from './MultiChoice.js';
  
 const url = 'https://dog.ceo/api/breeds/image/random';
 
@@ -16,13 +17,16 @@ class App extends Component {
   constructor(props){
 		super(props);
 		this.state = {
-      dog_image: '',
-      dog_name: '',
+      dogOptions: [],
+      isLoadingDogOptionsArray: false,
+      correctDog: {},
+      dogName: '',
       isLoading: false,
       isShowingDogName : false,
       dogArray: [],
       isLoadingDogArray: false,
       isShowingDogArrayNames: false,
+
 		}
   }
 
@@ -32,16 +36,55 @@ class App extends Component {
       let url = res.data.message;
       let dog = this.getDogNameFromURL(url);
       this.setState({
-        image: res.data.message,
-        dog_name: dog,
+        oneDogimage: res.data.message,
+        dogName: dog,
       });
     })
     .catch(error => {
       console.error('Error getting dog from API.', error);
     });
+    this.getDogOptionsArray();
     this.getDogArray();
   }
 
+  //Get the multiple choice dog array
+  getDogOptionsArray = () => {
+    this.setState({isLoadingDogOptionsArray: true});
+    //Add number of desired dogs to URL and API returns that many dogs
+    axios.get(url + '/4')
+    .then(res => {
+      let newDogArray = res.data.message.map((url) => {
+        let dogObj = {};
+        let oneDog = this.getDogNameFromURL(url);
+        dogObj.dogName = oneDog;
+        dogObj.dogImg = url;
+        return dogObj;
+      });
+      const randDog = newDogArray[Math.floor(Math.random()*newDogArray.length)];
+      this.setState({
+        dogOptions: newDogArray,
+        isLoadingDogArray: false,
+        correctDog: randDog,
+      })
+    })
+    .catch(error => {
+      console.error('Error getting dogs from API.', error);
+    });
+  }
+
+  checkAnswer = (dogName) => {
+    if (dogName === this.state.correctDog.dogName) {
+      console.log('this is check answer', dogName, 'Match');
+    } else {
+      console.log('no match');
+      
+    }
+    
+    
+  }
+
+
+//Dog array for the cards
   getDogArray = () => {
     this.setState({isLoadingDogArray: true});
     //Add number of desired dogs to URL and API returns that many dogs
@@ -110,8 +153,8 @@ class App extends Component {
       let url = res.data.message;
       let dog = this.getDogNameFromURL(url);
       this.setState({
-        image: res.data.message,
-        dog_name: dog,
+        oneDogimage: res.data.message,
+        dogName: dog,
         isLoading: false,
       });
     })
@@ -124,6 +167,11 @@ class App extends Component {
       <div>
         <Navigation />
         <Carousel />
+        <MultiChoice 
+          dogOptions={this.state.dogOptions} 
+          correctDog={this.state.correctDog} 
+          checkAnswer={this.checkAnswer} 
+        />
           <div className="d-flex justify-content-center align-items-center">
             <h1 className="display-4">Guess what dog breed!</h1>
           </div>
@@ -143,7 +191,7 @@ class App extends Component {
             <Row>
               <Col className="col-12">
                 <div className="d-flex justify-content-center m-3 dog-name">
-                  {this.state.isShowingDogName ? <h2>{this.state.dog_name}</h2> : null }
+                  {this.state.isShowingDogName ? <h2>{this.state.dogName}</h2> : null }
                 </div>
               </Col>
             </Row>
@@ -153,13 +201,15 @@ class App extends Component {
               <Col className="col-12">
                 <div className="d-flex justify-content-center align-items-center mt-3 dog-box">
                   { this.state.isLoading ? 
-                    <img className="d-block mb-5" 
-                    src={dogSpinner} 
-                    alt="dog spinner"/>
+                    <img 
+                      className="d-block mb-5" 
+                      src={dogSpinner} 
+                      alt="dog spinner"
+                    />
                     : 
                     <img className="mh-100 mb-5 d-block rounded" 
-                    src={this.state.image} 
-                    alt={this.state.dog_name}
+                      src={this.state.oneDogimage} 
+                      alt={this.state.dogName}
                   /> 
                   }
                 </div>
