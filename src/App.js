@@ -20,7 +20,8 @@ class App extends Component {
       dogOptions: [],
       isLoadingDogOptionsArray: false,
       correctDog: {},
-      correctAnswer: '',
+      correctAnswer: null,
+      currentScore: 0,
       dogName: '',
       isLoading: false,
       isShowingDogName : false,
@@ -66,6 +67,7 @@ class App extends Component {
         dogOptions: newDogArray,
         isLoadingDogArray: false,
         correctDog: randDog,
+        correctAnswer: null,
       })
     })
     .catch(error => {
@@ -75,9 +77,10 @@ class App extends Component {
 
   checkAnswer = (dogName) => {
     if (dogName === this.state.correctDog.dogName) {
-      this.setState({
+      this.setState((prevState) => ({
+        currentScore: prevState.currentScore + 1,
         correctAnswer: true,
-      });
+      }));
       console.log('this is check answer', dogName, 'Match');
     } else {
       console.log('no match');
@@ -179,6 +182,8 @@ class App extends Component {
           correctDog={this.state.correctDog} 
           checkAnswer={this.checkAnswer} 
           correctAnswer={this.state.correctAnswer}
+          getDogOptionsArray={this.getDogOptionsArray}
+          currentScore={this.state.currentScore}
         />
           <div className="d-flex justify-content-center align-items-center">
             <h1 className="display-4">Guess what dog breed!</h1>

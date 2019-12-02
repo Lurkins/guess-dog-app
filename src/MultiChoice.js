@@ -13,22 +13,16 @@ const MultiChoice = (props) => {
                 </div>
                 </div>
                 <div className="col-6">
-                {(() => {
-                    switch(props.correctAnswer) {
-                    case true:
-                        return <div className="text-success display-4">Correct Answer!</div>
-                    case false:
-                        return <div className="text-danger display-4">Wrong Answer!</div> 
-                    default:
-                        return null;
-                    }
-                })()}
-                    {/* {props.correctAnswer 
-                    ? 
-                    <div className="text-success display-4">Correct Answer!</div>
-                    : 
-                    <div className="text-danger display-4">Wrong Answer!</div> 
-                    } */}
+                    {(() => {
+                        switch(props.correctAnswer) {
+                        case true:
+                            return <div className="text-success display-4">Correct Answer!</div>
+                        case false:
+                            return <div className="text-danger display-4">Wrong Answer!</div> 
+                        default:
+                            return null;
+                        }
+                    })()}
                     {props.dogOptions.map((value, index) => {
                     return (
                         <div 
@@ -40,6 +34,17 @@ const MultiChoice = (props) => {
                         </div>
                     )
                     })}
+                    <div className="row">
+                    <div 
+                        className="btn btn-success m-3" 
+                        onClick={props.getDogOptionsArray}
+                    >
+                        NEXT DOG
+                    </div>
+                    <div className="text-success display-4">
+                        {props.currentScore}
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
