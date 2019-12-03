@@ -5,51 +5,55 @@ import {
 
 const MultiChoice = (props) => {
     return (
+        <div className="mt-5 vh-25">
+        
         <div className="container">
             <div className="row">
-            <div className="col-6">
-                <div>
-                    <img src={props.correctDog.dogImg} alt={props.correctDog.dogName} className="w-100" />
+            <div className="col-md-6 col-12">
+                <div className="h-50">
+                    <img src={props.correctDog.dogImg} alt={props.correctDog.dogName} className="w-100 rounded" />
                 </div>
                 </div>
-                <div className="col-6">
-                    {(() => {
-                        switch(props.correctAnswer) {
-                        case true:
-                            return <div className="text-success display-4">Correct Answer!</div>
-                        case false:
-                            return <div className="text-danger display-4">Wrong Answer!</div> 
-                        default:
-                            return null;
-                        }
-                    })()}
+                <div className="col-md-6 col-12">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="w-100 display-4">
+                                <p>Score: {props.currentScore}</p>
+                            </div>
+                        </div>
+                    </div>
                     {props.dogOptions.map((value, index) => {
                     return (
                         <div 
-                            className="btn btn-primary m-3" 
+                            className="btn btn-primary my-1 w-100" 
                             key={index}
                             onClick={() => props.checkAnswer(value.dogName)}
                         >
-                        {value.dogName} 
+                            {value.dogName} 
                         </div>
                     )
                     })}
-                    <div className="row">
                     <div 
-                        className="btn btn-success m-3" 
+                        className="btn btn-success my-3 w-100" 
                         onClick={props.getDogOptionsArray}
                     >
                         NEXT DOG
                     </div>
-                    <div className="text-success display-4">
-                        {props.currentScore}
-                    </div>
-                    </div>
+                    {(() => {
+                        switch(props.correctAnswer) {
+                        case true:
+                            return <div className="text-success display-4 text-center">Correct Answer!</div>
+                        case false:
+                            return <div className="text-danger display-4 text-center">Wrong Answer!</div> 
+                        default:
+                            return <div className="text-danger display-4"></div> 
+                        }
+                    })()}
                 </div>
             </div>
         </div>
-    
-      );
+    </div>
+    );
 }
 
 export default MultiChoice;
