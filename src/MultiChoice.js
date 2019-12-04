@@ -16,9 +16,16 @@ const MultiChoice = (props) => {
                 </div>
                 <div className="col-md-6 col-12">
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-6">
                             <div className="w-100 display-4">
                                 <p>Score: {props.currentScore}</p>
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="w-100 h-100 display-4 d-flex justify-content-center align-items-center">
+                                <div className="btn btn-warning d-block" onClick={props.resetScore}>
+                                    Reset Score
+                                </div>
                             </div>
                         </div>
                     </div>

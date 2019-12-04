@@ -87,10 +87,13 @@ class App extends Component {
       this.setState({
         correctAnswer: false,
       });
-      
     }
-    
-    
+  }
+
+  resetScore = () => {
+    this.setState({
+      currentScore: 0,
+    });
   }
 
 
@@ -184,6 +187,7 @@ class App extends Component {
           correctAnswer={this.state.correctAnswer}
           getDogOptionsArray={this.getDogOptionsArray}
           currentScore={this.state.currentScore}
+          resetScore={this.resetScore}
         />
           <div className="d-flex justify-content-center align-items-center">
             <h1 className="display-4">Guess what dog breed!</h1>
