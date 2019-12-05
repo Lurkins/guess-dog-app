@@ -17,6 +17,16 @@ const MultiChoice = (props) => {
                 <div className="col-md-6 col-12">
                     <div className="row">
                         <div className="col-6">
+                        {(() => {
+                        switch(props.correctAnswer) {
+                        case true:
+                            return <div className="text-success display-4 text-center">Correct Answer!</div>
+                        case false:
+                            return <div className="text-danger display-4 text-center">Wrong Answer!</div> 
+                        default:
+                            return <div className="text-danger display-4"></div> 
+                        }
+                    })()}
                             <div className="w-100 display-4">
                                 <p>Score: {props.currentScore}</p>
                             </div>
@@ -46,16 +56,6 @@ const MultiChoice = (props) => {
                     >
                         NEXT DOG
                     </div>
-                    {(() => {
-                        switch(props.correctAnswer) {
-                        case true:
-                            return <div className="text-success display-4 text-center">Correct Answer!</div>
-                        case false:
-                            return <div className="text-danger display-4 text-center">Wrong Answer!</div> 
-                        default:
-                            return <div className="text-danger display-4"></div> 
-                        }
-                    })()}
                 </div>
             </div>
         </div>
