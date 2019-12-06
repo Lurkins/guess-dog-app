@@ -5,7 +5,7 @@ import axios from 'axios';
 import './App.css';
 import Navigation from './Navigation.js';
 import Footer from './Footer.js';
-import { Container, Row, Col, ButtonGroup, Button, CardColumns } from 'reactstrap';
+import { Container, ButtonGroup, Button, CardColumns } from 'reactstrap';
 import dogSpinner from './dogSpinner.gif';
 import DogCard from './DogCard.js';
 import Carousel from './Carousel.js';
@@ -189,10 +189,7 @@ class App extends Component {
           currentScore={this.state.currentScore}
           resetScore={this.resetScore}
         />
-          <div className="d-flex justify-content-center align-items-center">
-            <h1 className="display-4">Guess what dog breed!</h1>
-          </div>
-          <Container>
+          {/* <Container>
           <Row>
             <Col className="col-12">
             <div className="row d-flex justify-content-center">
@@ -203,8 +200,8 @@ class App extends Component {
             </div>
             </Col>
           </Row>
-          </Container>
-          <Container>
+          </Container> */}
+          {/* <Container>
             <Row>
               <Col className="col-12">
                 <div className="d-flex justify-content-center m-3 dog-name">
@@ -212,8 +209,8 @@ class App extends Component {
                 </div>
               </Col>
             </Row>
-          </Container>
-          <Container>
+          </Container> */}
+          {/* <Container>
             <Row>
               <Col className="col-12">
                 <div className="d-flex justify-content-center align-items-center mt-3 dog-box">
@@ -232,9 +229,10 @@ class App extends Component {
                 </div>
               </Col>
             </Row>
-          </Container>
-          <hr/>
+          </Container> */}
+          
           <Container fluid={true}>
+          <hr/>
           <ButtonGroup className="btn-group my-5" aria-label="dog button group">
             <Button className="btn btn-info" onClick={this.getDogArray}>
               Refresh Dogs
@@ -246,7 +244,7 @@ class App extends Component {
               {this.state.isShowingDogArrayNames ? "Hide Dog Names" : "Show Dog Names"}
             </Button>
           </ButtonGroup>
-          <div className="vh-100">
+          <div className="h-100">
           {
             this.state.isLoadingDogArray ? 
             <div className="d-flex justify-content-center">
