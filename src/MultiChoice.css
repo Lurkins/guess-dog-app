@@ -1,3 +1,11 @@
 .multichoice-dog {
     height: 300px;
 }
+
+.answer-area {
+    height: 70px;
+}
+
+.score-text {
+    font-size: 2em;
+}
