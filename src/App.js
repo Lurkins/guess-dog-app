@@ -179,7 +179,10 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        <Carousel />
+        {/* <Carousel /> */}
+        <div className="container-fluid">
+          <p>Try to guess what dog breed is in the photo. Learn to recognize any dog.</p>
+        </div>
         <MultiChoice 
           dogOptions={this.state.dogOptions} 
           correctDog={this.state.correctDog} 

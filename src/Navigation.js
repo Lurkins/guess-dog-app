@@ -7,7 +7,8 @@ import {
   Nav,
   NavItem,
   NavLink,
-} from 'reactstrap'; 
+} from 'reactstrap';
+import './Navigation.css'; 
 
 const Navigation = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +17,8 @@ const Navigation = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Guess Dog</NavbarBrand>
+      <Navbar dark expand="md" className="navbar-custom">
+        <NavbarBrand href="/">Guess What Dog!</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

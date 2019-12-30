@@ -9,3 +9,13 @@
 .score-text {
     font-size: 2em;
 }
+
+.btn-primary {
+    background-color: #BF8F65;
+}
+.btn-success {
+    background-color: #262621;
+}
+.btn-warning {
+    background-color: #A6948D;
+}
