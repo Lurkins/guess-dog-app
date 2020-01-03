@@ -18,12 +18,12 @@ const Navigation = (props) => {
   return (
     <div>
       <Navbar dark expand="md" className="navbar-custom">
-        <NavbarBrand href="/">Guess What Dog!</NavbarBrand>
+        <NavbarBrand href="/">Guess Dog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/components/">RULES/ABOUT</NavLink>
             </NavItem>
             
           </Nav>

@@ -6,7 +6,7 @@ import './MultiChoice.css';
 
 const MultiChoice = (props) => {
     return (
-        <div className="vh-50">
+        <div className="vh-90">
             <div className="container my-5">
                 <div className="row">
                     <div className="col-6">

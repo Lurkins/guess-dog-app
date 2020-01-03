@@ -4,12 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import './App.css';
 import Navigation from './Navigation.js';
-import Footer from './Footer.js';
-import { Container, ButtonGroup, Button, CardColumns } from 'reactstrap';
-import dogSpinner from './dogSpinner.gif';
-import DogCard from './DogCard.js';
-import Carousel from './Carousel.js';
+// import Footer from './Footer.js';
+// import { Container, ButtonGroup, Button, CardColumns } from 'reactstrap';
 import MultiChoice from './MultiChoice.js';
+// import BunchDogs from './BunchDogs.js';
  
 const url = 'https://dog.ceo/api/breeds/image/random';
 
@@ -28,7 +26,6 @@ class App extends Component {
       dogArray: [],
       isLoadingDogArray: false,
       isShowingDogArrayNames: false,
-
 		}
   }
 
@@ -179,10 +176,7 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        {/* <Carousel /> */}
-        <div className="container-fluid">
-          <p>Try to guess what dog breed is in the photo. Learn to recognize any dog.</p>
-        </div>
+        {/* <BunchDogs /> */}
         <MultiChoice 
           dogOptions={this.state.dogOptions} 
           correctDog={this.state.correctDog} 
@@ -192,87 +186,7 @@ class App extends Component {
           currentScore={this.state.currentScore}
           resetScore={this.resetScore}
         />
-          {/* <Container>
-          <Row>
-            <Col className="col-12">
-            <div className="row d-flex justify-content-center">
-              <ButtonGroup className="btn-group" aria-label="dog button group">
-                <Button className="btn btn-info" onClick={this.getDog}>Get Dog</Button>
-                <Button className="btn btn-info" onClick={this.showDogName}>Show Breed</Button>
-              </ButtonGroup>
-            </div>
-            </Col>
-          </Row>
-          </Container> */}
-          {/* <Container>
-            <Row>
-              <Col className="col-12">
-                <div className="d-flex justify-content-center m-3 dog-name">
-                  {this.state.isShowingDogName ? <h2>{this.state.dogName}</h2> : null }
-                </div>
-              </Col>
-            </Row>
-          </Container> */}
-          {/* <Container>
-            <Row>
-              <Col className="col-12">
-                <div className="d-flex justify-content-center align-items-center mt-3 dog-box">
-                  { this.state.isLoading ? 
-                    <img 
-                      className="d-block mb-5" 
-                      src={dogSpinner} 
-                      alt="dog spinner"
-                    />
-                    : 
-                    <img className="mh-100 mb-5 d-block rounded" 
-                      src={this.state.oneDogimage} 
-                      alt={this.state.dogName}
-                  /> 
-                  }
-                </div>
-              </Col>
-            </Row>
-          </Container> */}
-          
-          <Container fluid={true}>
-          <hr/>
-          <ButtonGroup className="btn-group my-5" aria-label="dog button group">
-            <Button className="btn btn-info" onClick={this.getDogArray}>
-              Refresh Dogs
-            </Button>
-            <Button 
-              className="btn btn-warning" 
-              onClick={() => this.setState({isShowingDogArrayNames: !this.state.isShowingDogArrayNames})}
-            >
-              {this.state.isShowingDogArrayNames ? "Hide Dog Names" : "Show Dog Names"}
-            </Button>
-          </ButtonGroup>
-          <div className="h-100">
-          {
-            this.state.isLoadingDogArray ? 
-            <div className="d-flex justify-content-center">
-            <img className="d-block mb-5" 
-            src={dogSpinner} 
-            alt="dog spinner"
-            />
-            </div>
-            :             
-            <CardColumns>
-            {this.state.dogArray.map((value, index) => {
-              return (
-                <DogCard 
-                  key={index} 
-                  dogImg={value.dogImg} 
-                  dogName={value.dogName}
-                  showName={this.state.isShowingDogArrayNames}
-                />
-              )
-            })}
-          </CardColumns>
-          }
-          </div>
-          </Container>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
   }
