@@ -36,13 +36,15 @@ const MultiChoice = (props) => {
                     </div>
                     <div className="answer-area">
                         {(() => {
+                            let classes = '';
+                            props.answerBlinking ? classes += ' blink-me ' : classes = '';
                             switch(props.correctAnswer) {
                             case true:
-                                return <div className="text-success display-4 text-center">Correct Answer!</div>
+                                return <div className={classes += 'text-success display-4 text-center'}>Correct Answer!</div>
                             case false:
-                                return <div className="text-danger display-4 text-center">Wrong Answer!</div> 
+                                return <div className={classes += 'text-danger display-4 text-center'}>Wrong Answer!</div> 
                             default:
-                                return <div className="text-danger display-4"></div> 
+                                return <div className={classes}></div> 
                             }
                         })()}
                     </div>
@@ -51,9 +53,9 @@ const MultiChoice = (props) => {
                         {props.dogOptions.map((value, index) => {
                         return (
                             <div 
-                                className="btn btn-primary my-1 w-100" 
+                                className={props.correctKey === index ? "active btn btn-success my-3 w-100" : "btn btn-primary my-3 w-100"}
                                 key={index}
-                                onClick={() => props.checkAnswer(value.dogName)}
+                                onClick={() => props.checkAnswer(value.dogName, index)}
                             >
                                 {value.dogName} 
                             </div>

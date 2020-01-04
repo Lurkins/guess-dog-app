@@ -33,3 +33,13 @@
 .btn-warning {
     background-color: #A6948D;
 }
+
+.blink-me {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }

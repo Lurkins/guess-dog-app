@@ -26,10 +26,11 @@ class App extends Component {
       isLoadingDogOptionsArray: false,
       correctDog: {},
       correctAnswer: null,
+      answerBlinking: false,
+      correctKey: null,
       currentScore: 0,
       dogName: '',
       isLoading: false,
-      // isShowingDogName : false,
       dogArray: [],
       isLoadingDogArray: false,
       isShowingDogArrayNames: false,
@@ -72,6 +73,8 @@ class App extends Component {
         isLoadingDogArray: false,
         correctDog: randDog,
         correctAnswer: null,
+        answerBlinking: false,
+        correctKey: null,
       })
     })
     .catch(error => {
@@ -79,18 +82,26 @@ class App extends Component {
     });
   }
 
-  checkAnswer = (dogName) => {
-    if (dogName === this.state.correctDog.dogName) {
-      this.setState((prevState) => ({
-        currentScore: prevState.currentScore + 1,
-        correctAnswer: true,
-      }));
-      console.log('this is check answer', dogName, 'Match');
+  checkAnswer = (dogName, index) => {
+    if (this.state.correctAnswer === null || this.state.correctAnswer === false) { 
+      if (dogName === this.state.correctDog.dogName) {
+        this.setState((prevState) => ({
+          currentScore: prevState.currentScore + 1,
+          correctAnswer: true,
+          answerBlinking: false,
+          correctKey: index,
+        }));
+      } else {
+        this.setState({
+          correctAnswer: false,
+          answerBlinking: true,
+        });
+      }  
     } else {
-      console.log('no match');
       this.setState({
-        correctAnswer: false,
-      });
+        correctAnswer: true,
+        answerBlinking: false,
+      });  
     }
   }
 
@@ -203,6 +214,8 @@ class App extends Component {
               getDogOptionsArray={this.getDogOptionsArray}
               currentScore={this.state.currentScore}
               resetScore={this.resetScore}
+              answerBlinking={this.state.answerBlinking}
+              correctKey={this.state.correctKey}
             />
           </Route>
           <Route path="/">
