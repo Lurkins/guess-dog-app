@@ -8,7 +8,7 @@
     height: auto;
 } */
 
-.cta-btn {
+/* .cta-btn {
     border-radius: 25px;
     font-size: 1.5em;
     height: 50px;
@@ -18,7 +18,7 @@
 
 .cta-btn:hover {
     color: lightslategray;
-}
+} */
 
 .paw-image {
     background-image: url(./home-paw.jpg);

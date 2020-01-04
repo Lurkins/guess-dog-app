@@ -14,13 +14,13 @@ class Home extends Component {
         return (
             <div className="container text-center">
                 <div className="d-flex justify-content-center flex-column">
-                    <h1>Guess Dog</h1>
-                    <p>Something match dogs something</p>
+                    <h1 className="mt-5">Guess Dog</h1>
+                    <p>A dog breed guessing game</p>
                 </div>
 
                 <div className="d-flex justify-content-center cta">
-                    <div className="mt-5 d-flex justify-content-center align-items-center paw-image">
-                        <div className="btn cta-btn px-5">Play Guess Dog</div>
+                    <div className="mt-4 d-flex justify-content-center align-items-center paw-image">
+                        <div className="btn btn-primary cta-btn font-weight-bolder py-3 px-5">PLAY GUESS DOG</div>
                     </div>
                 </div>
             </div>

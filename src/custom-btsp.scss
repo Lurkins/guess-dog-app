@@ -1,0 +1,10 @@
+$theme-colors: (
+  "primary": #362f2d,
+  "secondary": #a67c52,
+  "warning": #c7b299
+
+);
+
+$btn-border-radius: 3000px;
+
+@import "./node_modules/bootstrap/scss/bootstrap";

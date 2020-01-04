@@ -13,7 +13,7 @@ const MultiChoice = (props) => {
                         <div className="row">
                             <div className="col-6">
                                 <div className="w-100 h-100 d-flex justify-content-start align-items-center">
-                                    <div className="btn reset-btn d-block mb-2" onClick={props.resetScore}>
+                                    <div className="btn btn-warning reset-btn d-block mb-2" onClick={props.resetScore}>
                                         Reset Score
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@ const MultiChoice = (props) => {
                             case true:
                                 return <div className={classes += 'text-success display-4 text-center'}>Correct Answer!</div>
                             case false:
-                                return <div className={classes += 'text-danger display-4 text-center'}>Wrong Answer!</div> 
+                                return <div className={classes += 'text-danger display-4 text-center'}>Wrong! Try Again.</div> 
                             default:
                                 return <div className={classes}></div> 
                             }
@@ -53,7 +53,7 @@ const MultiChoice = (props) => {
                         {props.dogOptions.map((value, index) => {
                         return (
                             <div 
-                                className={props.correctKey === index ? "active btn btn-success my-3 w-100" : "btn btn-primary my-3 w-100"}
+                                className={props.correctKey === index ? "active btn btn-success my-3 w-100" : "btn btn-secondary my-3 w-100"}
                                 key={index}
                                 onClick={() => props.checkAnswer(value.dogName, index)}
                             >
@@ -62,7 +62,7 @@ const MultiChoice = (props) => {
                         )
                         })}
                         <div 
-                            className="btn btn-success my-3 w-100" 
+                            className="btn btn-primary my-3 w-100" 
                             onClick={props.getDogOptionsArray}
                         >
                             NEXT DOG

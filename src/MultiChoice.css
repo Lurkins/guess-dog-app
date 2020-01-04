@@ -16,23 +16,21 @@
 
 .reset-btn {
     white-space: nowrap;
-    background-color: #A6948D;
-    color: white;
 }
 
 .dog-img-bg {
     background: black;
 }
 
-.btn-primary {
+/* .btn-primary {
     background-color: #BF8F65;
-}
-.btn-success {
+} */
+/* .btn-success {
     background-color: #262621;
-}
-.btn-warning {
+} */
+/* .btn-warning {
     background-color: #A6948D;
-}
+} */
 
 .blink-me {
     animation: blinker 1s linear infinite;

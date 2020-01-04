@@ -9,11 +9,13 @@ import './BunchDogs.css';
 const BunchDogs = (props) => {
     return (
         <Container fluid={true}>
-            <h1>Just a bunch of dogs.</h1>
-            <p>Quiz yourself.</p>
+            <div className="text-center">
+                <h1>Just a bunch of dogs.</h1>
+                <p>Quiz yourself.</p>
+            </div>
         <hr/>
         <ButtonGroup className="btn-group my-5" aria-label="dog button group">
-          <Button className="btn btn-info" onClick={props.getDogArray}>
+          <Button className="btn" onClick={props.getDogArray}>
             Refresh Dogs
           </Button>
           <Button 
