@@ -195,8 +195,6 @@ class App extends Component {
     return (
       <Router>
         <Navigation />
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/bunchofdogs">
             <BunchDogs 
@@ -204,6 +202,7 @@ class App extends Component {
               dogArray={this.state.dogArray}
               isShowingDogArrayNames={this.state.isShowingDogArrayNames}
               showDogNames={this.showDogNames}
+              isLoadingDogArray={this.state.isLoadingDogArray}
             />
           </Route>
           <Route path="/play">

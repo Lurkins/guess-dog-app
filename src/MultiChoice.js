@@ -26,7 +26,7 @@ const MultiChoice = (props) => {
                         </div>
                     </div>
                     <div className="col-6">
-                            <p className="text-center font-weight-bolder">Select the dog in the photo.</p>
+                            <p className="text-center instruction font-weight-bolder">Select the dog in the photo.</p>
                     </div>
                 </div>
                 <div className="row">
@@ -62,7 +62,7 @@ const MultiChoice = (props) => {
                         )
                         })}
                         <div 
-                            className="btn btn-primary my-3 w-100" 
+                            className="btn btn-primary my-3 w-100 font-weight-bold" 
                             onClick={props.getDogOptionsArray}
                         >
                             NEXT DOG

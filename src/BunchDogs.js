@@ -10,19 +10,17 @@ const BunchDogs = (props) => {
     return (
         <Container fluid={true}>
             <div className="text-center">
-                <h1>Just a bunch of dogs.</h1>
-                <p>Quiz yourself.</p>
+                <h1 className="mt-5">Just a bunch of dogs.</h1>
             </div>
-        <hr/>
         <ButtonGroup className="btn-group my-5" aria-label="dog button group">
-          <Button className="btn" onClick={props.getDogArray}>
+          <Button className="btn-secondary font-weight-bold" onClick={props.getDogArray}>
             Refresh Dogs
           </Button>
           <Button 
-            className="btn btn-warning" 
+            className="btn btn-warning font-weight-bold" 
             onClick={props.showDogNames}
           >
-            {props.isShowingDogArrayNames ? "Hide Dog Names" : "Show Dog Names"}
+            {props.isShowingDogArrayNames ? "Hide Dog Breeds" : "Show Dog Breeds"}
           </Button>
         </ButtonGroup>
         <div className="h-100">
