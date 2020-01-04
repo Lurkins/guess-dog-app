@@ -23,7 +23,7 @@ const Navigation = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink tag={Link} to="/about">RULES/ABOUT</NavLink>
+              <NavLink tag={Link} to="/about">ABOUT</NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={Link} to="/play">PLAY</NavLink>

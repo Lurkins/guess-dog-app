@@ -1,0 +1,32 @@
+.cta {
+    width: 100%;
+    height: 600px;
+}
+
+/* .cta-paw {
+    width: 300px;
+    height: auto;
+} */
+
+.cta-btn {
+    border-radius: 25px;
+    font-size: 1.5em;
+    height: 50px;
+    background-color: #262621;
+    color: white;
+}
+
+.cta-btn:hover {
+    color: lightslategray;
+}
+
+.paw-image {
+    background-image: url(./home-paw.jpg);
+    background-repeat: no-repeat;
+    /* background-attachment: contain; */
+    /* background-size: cover;*/
+    background-size: 100% 100%;
+    width: 300px;
+    height: 300px;
+
+}
