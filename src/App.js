@@ -29,7 +29,7 @@ class App extends Component {
       currentScore: 0,
       dogName: '',
       isLoading: false,
-      isShowingDogName : false,
+      // isShowingDogName : false,
       dogArray: [],
       isLoadingDogArray: false,
       isShowingDogArrayNames: false,
@@ -132,9 +132,9 @@ class App extends Component {
     return dog;
   }
 
-  showDogName = (event) => {
+  showDogNames = (event) => {
     event.preventDefault();
-    this.setState({isShowingDogName: true})
+    this.setState({isShowingDogArrayNames: !this.state.isShowingDogArrayNames}) 
   }
 
   //capitalize breed name
@@ -163,7 +163,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({ 
       isLoading: true, 
-      isShowingDogName: false 
+      // isShowingDogName: false 
     });    
     axios.get(url)
     .then(res => {
@@ -187,7 +187,12 @@ class App extends Component {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/bunchofdogs">
-            <BunchDogs />
+            <BunchDogs 
+              getDogArray={this.getDogArray}
+              dogArray={this.state.dogArray}
+              isShowingDogArrayNames={this.state.isShowingDogArrayNames}
+              showDogNames={this.showDogNames}
+            />
           </Route>
           <Route path="/play">
             <MultiChoice 

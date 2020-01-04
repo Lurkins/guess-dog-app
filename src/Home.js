@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import Paw from './home-paw.jpg';
 import {
 
 } from 'reactstrap'; 
 import './Home.css'; 
-
-// var pawImage = {
-//     backgroundImage: `url(${Paw})`
-//  }
 
 class Home extends Component {
     constructor(props){
