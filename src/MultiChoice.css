@@ -1,5 +1,7 @@
 .multichoice-dog {
+    max-width: 100%;
     height: 300px;
+
 }
 
 .answer-area {
@@ -7,8 +9,19 @@
 }
 
 .score-text {
-    font-size: 3em;
+    font-size: 4vw;
     font-weight: bolder;
+    white-space: nowrap;
+}
+
+.reset-btn {
+    white-space: nowrap;
+    background-color: #A6948D;
+    color: white;
+}
+
+.dog-img-bg {
+    background: black;
 }
 
 .btn-primary {

@@ -7,7 +7,14 @@ import Navigation from './Navigation.js';
 // import Footer from './Footer.js';
 // import { Container, ButtonGroup, Button, CardColumns } from 'reactstrap';
 import MultiChoice from './MultiChoice.js';
-// import BunchDogs from './BunchDogs.js';
+import BunchDogs from './BunchDogs.js';
+import Home from './Home.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link
+} from "react-router-dom";
  
 const url = 'https://dog.ceo/api/breeds/image/random';
 
@@ -174,20 +181,30 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <Router>
         <Navigation />
-        {/* <BunchDogs /> */}
-        <MultiChoice 
-          dogOptions={this.state.dogOptions} 
-          correctDog={this.state.correctDog} 
-          checkAnswer={this.checkAnswer} 
-          correctAnswer={this.state.correctAnswer}
-          getDogOptionsArray={this.getDogOptionsArray}
-          currentScore={this.state.currentScore}
-          resetScore={this.resetScore}
-        />
-        {/* <Footer /> */}
-      </div>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/bunchofdogs">
+            <BunchDogs />
+          </Route>
+          <Route path="/play">
+            <MultiChoice 
+              dogOptions={this.state.dogOptions} 
+              correctDog={this.state.correctDog} 
+              checkAnswer={this.checkAnswer} 
+              correctAnswer={this.state.correctAnswer}
+              getDogOptionsArray={this.getDogOptionsArray}
+              currentScore={this.state.currentScore}
+              resetScore={this.resetScore}
+            />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+    </Router>
     )
   }
 }
