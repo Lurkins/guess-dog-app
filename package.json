@@ -2,7 +2,7 @@
   "name": "guess-dog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lurkins.github.io/guess-dog-app/",
+  "homepage": "https://lurkins.github.io/guess-dog-app",
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
