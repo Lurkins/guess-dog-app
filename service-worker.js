@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/guess-dog-app/precache-manifest.18fd6e17f714050e5e0a00f2dec09dac.js"
+  "/guess-dog-app/precache-manifest.bb186e66b4508231906703a4399cdf01.js"
 );
 
 self.addEventListener('message', (event) => {
