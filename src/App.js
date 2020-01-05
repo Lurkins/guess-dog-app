@@ -5,8 +5,6 @@ import './custom-btsp.scss';
 import axios from 'axios';
 import './App.css';
 import Navigation from './Navigation.js';
-// import Footer from './Footer.js';
-// import { Container, ButtonGroup, Button, CardColumns } from 'reactstrap';
 import MultiChoice from './MultiChoice.js';
 import BunchDogs from './BunchDogs.js';
 import Home from './Home.js';
