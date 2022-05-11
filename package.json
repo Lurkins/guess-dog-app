@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://lurkins.github.io/guess-dog-app",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "node-sass": "^7.0.0",
